@@ -14,13 +14,19 @@ var SlideShow = {
 
     renderSlide: function(slideCount){
         slideCount = slideCount - 1;
+        this.flushSlide();
         for(var i=0; i<SLIDEDATA[slideCount].length; i++){
            this.renderElement(SLIDEDATA[slideCount][i]);
         }
     },
 
     renderElement: function(data){
+        $('#slide-area').append("<img src='"+data.src+"'></img>");
         console.log(data);
+    },
+
+    flushSlide: function(){
+        $('#slide-area').html('');
     }
 }
 

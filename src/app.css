@@ -1,3 +1,11 @@
 body{
     background: url('/images/background.jpg');
 }
+
+#slide-area{
+    position: relative;
+}
+
+#slide-area img{
+    position: absolute;
+}

@@ -21,8 +21,13 @@ var SlideShow = {
     },
 
     renderElement: function(data){
-        $('#slide-area').append("<img src='"+data.src+"'></img>");
-        console.log(data);
+        $('#slide-area').append("<img src='"+data.src+"' style='left: "+data.left+"px; top: "+data.top+"px;'></img>");
+        var startTop = $(window).height();
+
+        var startLeft = -$("#slide-area img").last().width();
+
+
+        $("#slide-area img").last().css({left: startLeft + 'px', top: startTop + 'px'}).animate({left: data.left+'px', top: data.top+'px'}, 1000);
     },
 
     flushSlide: function(){

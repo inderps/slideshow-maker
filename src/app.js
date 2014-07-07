@@ -16,19 +16,26 @@ var SlideShow = {
     renderSlide: function(slideCount){
         slideCount = slideCount - 1;
         this.flushSlide();
+        this.elementDelay = 0;
+        window.scrollTo(0,0);
         for(var i=0; i<SLIDEDATA[slideCount].length; i++){
-           this.renderElement(SLIDEDATA[slideCount][i]);
+           this.renderElement(SLIDEDATA[slideCount][i], slideCount + 's' + i);
         }
     },
 
-    renderElement: function(data){
-        $('#slide-area').append("<img src='"+data.src+"' style='left: "+data.left+"px; top: "+data.top+"px;'></img>");
+    renderElement: function(data, id){
+        $('#slide-area').append("<img class='element' id='"+id+"el' src='"+data.src+"'></img>");
+        $('#slide-area').append("<img class='hand' id='"+id+"hnd' src='/images/"+data.entry+".png'></img>");
+
         var startTop = $(window).height();
+        var startLeft = -$("#" + id + "el").width();
 
-        var startLeft = -$("#slide-area img").last().width();
+        $("#" + id + "el").css({left: startLeft + 'px', top: startTop + 'px'}).delay(this.elementDelay).animate({left: data.left+'px', top: data.top+'px'}, 700);
+        $("#" + id + "hnd").css({left: startLeft + 'px', top: startTop + 'px'}).delay(this.elementDelay).animate({left: data.left+'px', top: data.top+'px'}, 700);
 
-        $("#slide-area img").last().css({left: startLeft + 'px', top: startTop + 'px'}).delay(this.elementDelay).animate({left: data.left+'px', top: data.top+'px'}, 1000);
-        this.elementDelay = this.elementDelay + 2000;
+//        this.elementDelay = this.elementDelay + 1500;
+//        $("#slide-area img.hand").last().delay(this.elementDelay).animate({left: startLeft + 'px', top: startTop + 'px'}, 700);
+        this.elementDelay = this.elementDelay + 1500;
     },
 
     flushSlide: function(){

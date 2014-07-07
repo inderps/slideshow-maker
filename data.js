@@ -1,12 +1,12 @@
 var SLIDEDATA = [
     [{
-        src: '/images/left.png',
+        src: '/slides/1/slide1-1.png',
         entry: 'left',
         left: '10',
         top: '200'
     },
     {
-        src: '/images/right.png',
+        src: '/slides/1/slide1-2.png',
         entry: 'right',
         left: '1050',
         top: '200'

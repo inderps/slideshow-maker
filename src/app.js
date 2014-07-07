@@ -2,6 +2,7 @@ var SlideShow = {
     init: function(){
         var _this = this;
         this.slideCount = 0;
+        this.elementDelay = 0;
         $('body').keyup(function(e){
             if(e.keyCode == 32){
                 _this.slideCount = _this.slideCount + 1;
@@ -26,8 +27,8 @@ var SlideShow = {
 
         var startLeft = -$("#slide-area img").last().width();
 
-
-        $("#slide-area img").last().css({left: startLeft + 'px', top: startTop + 'px'}).animate({left: data.left+'px', top: data.top+'px'}, 1000);
+        $("#slide-area img").last().css({left: startLeft + 'px', top: startTop + 'px'}).delay(this.elementDelay).animate({left: data.left+'px', top: data.top+'px'}, 1000);
+        this.elementDelay = this.elementDelay + 2000;
     },
 
     flushSlide: function(){

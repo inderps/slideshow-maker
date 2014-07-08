@@ -31,10 +31,10 @@ var SlideShow = {
         var startLeft = -$("#" + id + "el").width();
 
         $("#" + id + "el").css({left: startLeft + 'px', top: startTop + 'px'}).delay(this.elementDelay).animate({left: data.left+'px', top: data.top+'px'}, 700);
-        $("#" + id + "hnd").css({left: startLeft + 'px', top: startTop + 'px'}).delay(this.elementDelay).animate({left: data.left+'px', top: data.top+'px'}, 700);
+        $("#" + id + "hnd").css({left: startLeft + 'px', top: startTop + 'px'}).delay(this.elementDelay).animate({left: data.left+'px', top: data.top+'px'}, 700).animate({left: startLeft + 'px', top: startTop + 'px'}, 700);
 
 //        this.elementDelay = this.elementDelay + 1500;
-//        $("#slide-area img.hand").last().delay(this.elementDelay).animate({left: startLeft + 'px', top: startTop + 'px'}, 700);
+//        $("#" + id + "hnd").delay(this.elementDelay).animate({left: startLeft + 'px', top: startTop + 'px'}, 700);
         this.elementDelay = this.elementDelay + 1500;
     },
 
